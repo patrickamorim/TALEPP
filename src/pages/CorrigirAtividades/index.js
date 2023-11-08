@@ -49,60 +49,13 @@ const salvarCorrecao = async (palavras, resposta) => {
   salvar = await corrigir(palavras, resposta);
 
  if(salvar == true){
-  navigation.goBack();
+ // navigation.goBack();
+ setRespostas(await getRespostas(route.params.item.id));
  }
 
 }
  
-
-  const testeDown = async () => {
-   const url = await verRespostas();
-   setUrlAudio(url);
-  }
-
-  const baixarAudio = async () => {
-   const tempPath = await DownloadAudio(urlAudio, AudioUtils.DocumentDirectoryPath);
-   setAudioPath(tempPath);
-
-  }
-
-  const _play = async() => {
- 
-    // These timeouts are a hacky workaround for some issues with react-native-sound.
-    // See https://github.com/zmxv/react-native-sound/issues/89.
-    setTimeout(() => {
-      var sound = new Sound(audioPath, '', (error) => {
-        if (error) {
-          console.log('failed to load the sound', error);
-        }
-      });
-  
-      setTimeout(() => {
-        sound.play((success) => {
-          if (success) {
-            console.log('successfully finished playing DA PASTA '+audioPath);
-            console.log('url do audio:'+urlAudio);
-          } else {
-            console.log('playback failed due to audio decoding errors');
-          }
-        });
-      }, 100);
-    }, 100);
-  };
-
-  const palavras = ({item2}) =>{
-
-//     <View>
-//  <Text>aa</Text>
-//     </View>
-  console.log('aaaaa')
-  
-
-  }
-
-
-
-  const renderAtividades = ({item}) => (
+    const renderAtividades = ({item}) => (
    
     <View>
 
@@ -162,16 +115,7 @@ const salvarCorrecao = async (palavras, resposta) => {
               
                 
                   <RenderPalavras respostas = {item} salvarCorrecao = {salvarCorrecao}/>
-      
-
-        
-
-      
-              
       </View>
-
-
-      
 
     </View>
    

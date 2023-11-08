@@ -104,10 +104,10 @@ const oncheked = async (diretorio) => {
          })}
 
          <View>
-         <TouchableOpacity style={[styles.botaoEnviarAtividade, {backgroundColor: corBotao}]}
+         <TouchableOpacity style={[styles.botaoEnviarAtividade, {backgroundColor: respostas.corrigido ? Colors.botaoAdicinoar : Colors.help}]}
          onPress={() => salvarCorrecao(palavras, respostas)}
          >
-            <Text style={styles.textoBotao}>{textoSalvar}</Text>
+            <Text style={styles.textoBotao}>{respostas.corrigido ? 'Atualizar Correção' : 'Salvar Correção'}</Text>
           </TouchableOpacity>
          </View>
          
